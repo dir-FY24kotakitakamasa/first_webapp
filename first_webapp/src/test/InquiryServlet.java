@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.w3c.dom.css.ElementCSSInlineStyle;
+
 
 
 @WebServlet("/InquiryServlet")
@@ -28,7 +28,7 @@ public class InquiryServlet extends HttpServlet {
         var usermail = request.getParameter("usermail");
         var content = request.getParameter("content");
 
-        List<String> error = new ArrayList<String>();
+        List<String> errors = new ArrayList<String>();
         
         if (username == null || username.equals("")) {
             errors.add("氏名を入力してください。");
@@ -46,13 +46,14 @@ public class InquiryServlet extends HttpServlet {
             request.setAttribute("username", username);
             request.setAttribute("usermail", usermail);
             request.setAttribute("content", content);
-                    }
+                    
         }
         
 
-        var rd = request.getRequestDispatcher("/WEB-INF/inquiry_result.jsp");
-        rd.forward(request, response);
+    var rd = request.getRequestDispatcher("/WEB-INF/inquiry_result.jsp");
+    rd.forward(request, response);
 
     }
+
 
 }
